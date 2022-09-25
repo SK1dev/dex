@@ -1,0 +1,20 @@
+.tradeFormContainer {
+  width: 40vw;
+  background-color: #131823;
+  border-radius: 40px;
+  padding: 20px;
+  margin-left: 1.5rem;
+}
+.tradeFormContainer .tokenContainer,
+.tradeFormContainer .limitContainer {
+  background-color: #06070a;
+  height: 12vh;
+  border-radius: 20px;
+}
+.tradeFormContainer .limitContainer {
+  height: 22vh;
+}
+
+.tradeFormContainer div {
+  margin: 15px 0;
+}
