@@ -1,20 +1,164 @@
 .tradeFormContainer {
+  font-family: "SF Pro Display";
   width: 40vw;
+  height: 66vh;
   background-color: #131823;
   border-radius: 40px;
-  padding: 20px;
+  padding: 18px;
   margin-left: 1.5rem;
+  font-size: 18px;
+  color: #6c86ad;
 }
+
 .tradeFormContainer .tokenContainer,
 .tradeFormContainer .limitContainer {
-  background-color: #06070a;
-  height: 12vh;
+  background-image: linear-gradient(#06070a, #0c192d);
+  height: 8vh;
   border-radius: 20px;
 }
 .tradeFormContainer .limitContainer {
-  height: 22vh;
+  height: 35vh;
+}
+.tradeFormContainer .tokensRow {
+  margin-top: 10px;
+  padding-top: 0;
 }
 
-.tradeFormContainer div {
+.tradeFormContainer .tokenContainer,
+.tradeFormContainer .limitContainer {
   margin: 15px 0;
+  padding: 10px;
+}
+.tradeFormContainer .tradeSubheadings {
+  margin: 0;
+}
+.tradeSubheadings,
+.tokenContainer .tokensRow {
+  display: flex;
+}
+.tradeSubheadings h3 {
+  margin: 0 0.8rem;
+  font-size: 18px;
+}
+.tradeSubheadings h3:nth-child(2) {
+  color: #fff;
+}
+.tradeFormContainer .tokenContainer {
+  display: flex;
+  flex-direction: column;
+}
+.tradeFormContainer .tokenContainer select {
+  width: 100px;
+  background: #0c1627;
+  border: none;
+  color: white;
+  height: 50px;
+  border-radius: 12px;
+}
+.tradeFormContainer .tokenContainer select:after {
+  color: #6c86ad;
+}
+
+.tradeBuyFormLink,
+.tradeSellFormLink {
+  color: #fff;
+  font-size: 18px;
+  background: none;
+  border: none;
+  width: 80px;
+  text-decoration: none;
+  border-bottom: 1px solid #5ac4be;
+}
+.tradeSellFormLink {
+  margin-left: 0px;
+  color: #6c86ad;
+  border-bottom: 1px solid #6c86ad;
+}
+.tokenContainer > * {
+  justify-content: space-between;
+}
+.tokenContainer a {
+  color: #6c86ad;
+  text-decoration: none;
+  font-size: 15px;
+}
+.limitContainer a {
+  text-decoration: none;
+  margin: 0 20px;
+}
+.limitContainer a:focus {
+  text-decoration: underline;
+}
+.limitContainer .limitMarketContainer {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  font-weight: 400;
+}
+
+.limitMarketContainer .formGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.limitForm,
+.marketForm {
+  margin: 0 auto;
+}
+.limitMarketContainer form .formGroup input {
+  background-color: #2a2956;
+  border: none;
+  border-radius: 12px;
+  height: 30px;
+  padding: 5px 10px;
+  color: #fff;
+}
+.limitMarketContainer form .formGroup input:focus {
+  border: 1px solid #5ac4be;
+  outline: none;
+}
+
+.marketForm .formGroupText {
+  background-color: #2a2956;
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 12px;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.marketForm .formGroupText p {
+  margin: 0;
+  padding: 0;
+}
+.marketForm {
+  display: flex;
+  flex-direction: column;
+}
+.marketForm .marketPriceLabel {
+  text-align: right;
+}
+
+.limitMarketContainer button {
+  display: flex;
+  justify-content: center;
+}
+.buySellButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.limitMarketContainer form p {
+  text-align: center;
+}
+.limitMarketContainer form button {
+  margin: auto;
+  margin-top: 12px;
+  border: 1px solid #5ac4be;
+  color: #ffffff;
+  background-color: #2a2956;
+  border-radius: 12px;
+  padding: 10px;
 }

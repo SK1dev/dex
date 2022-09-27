@@ -5,9 +5,11 @@ import Navbar from './components/Navbar/Navbar'
 const App = () => {
   return (
     <div className="App">
-      <Navbar />
+            <Navbar />
+      <div className='tradeContent'>
       <TradeGraph />
       <Trade />
+      </div>
     </div>
   );
 };

@@ -3,8 +3,12 @@ body {
   color: #fff;
   font-family: "SF Pro Display";
 }
-
 .App {
+  padding: 0 5rem;
+  
+}
+
+.tradeContent {
   display: flex;
   flex-direction: row;
   margin-top: 4rem;
