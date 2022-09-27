@@ -1,31 +1,43 @@
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// You can also run a script with `npx hardhat run <script>`. If you do that, Hardhat
-// will compile your contracts, add the Hardhat Runtime Environment's members to the
-// global scope, and execute the script.
 const hre = require("hardhat");
+const fs = require('fs');
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
-  const unlockTime = currentTimestampInSeconds + ONE_YEAR_IN_SECS;
+  [signer1, signer2] = await ethers.getSigners();
 
-  const lockedAmount = hre.ethers.utils.parseEther("1");
+  const Wallet = await ethers.getContractFactory("Wallet", signer1);
+  const walletContract = await Wallet.deploy();
 
-  const Lock = await hre.ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
+  const Dex = await ethers.getContractFactory("Dex", signer1);
+  const dexContract = await Dex.deploy();
 
-  await lock.deployed();
+  const Dai = await ethers.getContractFactory("Dai", signer2);
+  const dai = await Dai.deploy();
 
-  console.log(
-    `Lock with 1 ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`
+  await walletContract.addToken(
+    ethers.utils.formatBytes32String('Dai'),
+    dai.address
   );
+  
+  await walletContract.addToken(
+    ethers.utils.formatBytes32String('Eth'),
+    '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266'
+  );
+
+  fs.writeFileSync('./config.js', `
+  export const walletContractAddress = "${walletContract.address}"
+  export const daiAddress = "${dai.address}"  
+  export const dexContractAddress = "${dexContract.address}"
+  `)
+
+  console.log("Wallet deployed to:", walletContract.address, "by", signer1.address);
+  console.log("Dai deployed to:", dai.address, "by", signer2.address);
+  console.log("Dex deployed to:", dexContract.address, "by", signer1.address);
+
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });

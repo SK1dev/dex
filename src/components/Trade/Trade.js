@@ -1,8 +1,7 @@
-import styles from "./trade.module.css";
-import { useState } from "react";
+
 
 const Trade = () => {
-  const [isSell, setIsSell] = useState(false);
+  
 
   return (
     <>

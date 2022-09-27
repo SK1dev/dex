@@ -1,4 +1,4 @@
-.nav ul {
+.nav ul, .nav .contentNotConnected, .nav .contentConnected {
   height: 60px;
   width: 100%;
   display: flex;
@@ -25,7 +25,19 @@
   width: 25%;
   display: flex;
   justify-content: space-between;
-  padding-right: 690px;
+  padding-right: 40px;
+}
+.contentNotConnected .navMenu  {
+  padding-right: 660px;
+}
+.contentConnected .navMenu {
+  padding-right: 165px;
+}
+.connectDetails {
+  display: flex;
+}
+.connectDetails h3 {
+  margin: 0 20px;
 }
 .tokenButton {
   background-image: linear-gradient(to right, #4559f3, #251f36);
